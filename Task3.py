@@ -17,3 +17,5 @@ def assign_eb_score(row):
 df["EB_Score"]=df["SaleCheckInDayDiff"].apply(assign_eb_score)
 
 print(df.groupby(["SaleCityName","ConceptName","EB_Score"]).agg({"Price":["mean","count"]}))
+print(df.groupby(["SaleCityName","ConceptName","Seasons"]).agg({"Price":["mean","count"]}))
+print(df.groupby(["SaleCityName","ConceptName","CInDay"]).agg({"Price":["mean","count"]}))
