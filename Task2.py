@@ -18,10 +18,19 @@ def assign_eb_score(row):
     elif row>30 & row<=90:
          return "Planners"
     elif row>90:
-         return "Early Brookers"
+         return "Early Bookers"
 
 df["EB_Score"]=df["SaleCheckInDayDiff"].apply(assign_eb_score)
 
 print(df["EB_Score"])
 print(df["EB_Score"].value_counts())
 print(df.head(50))
+
+'''
+bins=[-1,7,30,90, df["SaleCheckInDayDiff"].max()]
+labels=["Last Minuters", "Potential Planners", "Planners", "Early Bookers"]
+
+df["EB_Score"]=pd.cut(df["SaleCheckInDayDiff"], bins, labels=labels)
+df.head(50).to_excel("eb_scores.xlsx",index=False)
+
+'''
