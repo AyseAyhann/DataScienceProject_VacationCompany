@@ -9,6 +9,7 @@ pd.set_option('display.width',500)
 df=pd.read_excel("miuul_gezinomi.xlsx")
 print(df.head())
 print(df.shape)
+print(df.info())
 print(df.tail())
 print(df.columns)
 
@@ -24,16 +25,16 @@ print(df["ConceptName"].nunique())
 print(df["ConceptName"].value_counts())
 
 # 5
-print(df.groupby("SaleCityName")["Price"].sum())
+print(df.groupby("SaleCityName").agg({"Price": "sum"}))
 
 # 6
-print(df.groupby("ConceptName")["Price"].sum())
+print(df.groupby("ConceptName").agg({"Price":"sum"}))
 
 # 7
-print(df.groupby("SaleCityName")["Price"].sum())
+print(df.groupby("SaleCityName").agg({"Price": "sum"}))
 
 # 8
-print(df.groupby("ConceptName")["Price"].mean())
+print(df.groupby("ConceptName").agg({"Price": "mean"}))
 
 # 9
-print(df.groupby(["ConceptName","SaleCityName"])["Price"].mean())
+print(df.groupby(["ConceptName","SaleCityName"]).agg({"Price": "mean"}))
